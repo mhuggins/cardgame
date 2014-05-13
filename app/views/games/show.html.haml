@@ -1,1 +1,18 @@
-show game
+.game
+  .controls
+    .players
+      %h3.player1
+        %span.name Bob
+        %span.score (4)
+      vs.
+      %h3.player2
+        %span.name Matt
+        %span.score (7)
+
+    .hand
+      %h4 Your Hand
+      - 5.times do
+        = render 'game_card'
+  .board
+    - 3.times do |row|
+      = render 'row', row: row

@@ -1,0 +1,81 @@
+.game {
+  width: 800px;
+  height: 600px;
+  background: #6C6C6C;
+  margin: auto;
+  .controls {
+    width: 200px;
+    height: 600px;
+    float: left;
+    background: #363636;
+    position: relative;
+    .players {
+      text-align: center;
+      font-size: 1.2em;
+    }
+    .hand {
+      position: absolute;
+      top: 150px;
+      height: 450px;
+      width: 200px;
+      overflow: scroll;
+      text-align: center;
+      .game-card {
+        left: 45px;
+        margin-bottom: 20px;
+      }
+    }
+  }
+  .board {
+    width: 400px;
+    float: left;
+    margin-left: 110px;
+    margin-top: 40px;
+    .game-row {
+      .game-column {
+        display: inline-block;
+        width: 102px;
+        height: 152px;
+        margin: 10px;
+      }
+    }
+  }
+}
+
+.game-card {
+  background: #ACACAC;
+  border: 1px solid white;
+  &.empty {
+    border: 1px dashed gray;
+    background: darkgray;
+  }
+  width: 100px;
+  height: 150px;
+  position: relative;
+  top: 0;
+  left: 0;
+  border-radius: 5px;
+  label {
+    position: absolute;
+    text-align: center;
+  }
+
+  .left, .right {
+    top: 65px;
+  }
+  .top, .bottom {
+    left: 45px;
+  }
+  .top {
+    top: 5px;
+  }
+  .bottom {
+    bottom: 5px;
+  }
+  .right {
+    right: 5px;
+  }
+  .left {
+    left: 5px;
+  }
+}
