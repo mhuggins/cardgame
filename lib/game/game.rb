@@ -20,7 +20,14 @@ module Game
 
     def play(card_id, x, y)
       card = active_player.card(card_id)
-      @board.play(x, y, card)
+      success = @board.play(x, y, card)
+
+      if success
+        active_player.cards.delete(card)
+        @active_player = (@active_player + 1) % 2
+      end
+
+      success
     end
 
     def as_json(*)
