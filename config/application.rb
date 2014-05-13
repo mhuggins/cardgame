@@ -8,6 +8,8 @@ Bundler.require(*Rails.groups)
 
 module CardGame
   class Application < Rails::Application
+    require Rails.root.join('app/extensions/match_making')
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -20,6 +22,15 @@ module CardGame
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
+    config.autoload_paths += Dir[Rails.root.join('app/extensions/{**/}')]
     config.autoload_paths += Dir[Rails.root.join('lib/{**/}')]
+
+    config.middleware.delete Rack::Lock
+
+    config.middleware.use FayeRails::Middleware, mount: '/faye', timeout: 25 do
+      add_extension Extensions::MatchMaking.new
+      # add_extension Extensions::Match
+      # load_adapter 'thin'
+    end
   end
 end
