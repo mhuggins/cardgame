@@ -1,7 +1,7 @@
 module Game
   class Game
     BOARD_SIZE = 3.freeze
-    CARD_COUNT = (BOARD_SIZE ^ 2 / 2).ceil.freeze
+    CARD_COUNT = (BOARD_SIZE ** 2 / 2.0).ceil.freeze
 
     attr_reader :players, :board
 

@@ -17,15 +17,15 @@ module Game
 
     def self.generate(player, count, combined_value = 20)
       count.times.map do
-        max_side_value = [combined_value / 4, 10].min
+      #   max_side_value = [combined_value / 4, 10].min
+      #
+      #   values = 4.times.map do
+      #     val = [combined_value, (1..max_side_value).to_a.sample].min
+      #     combined_value -= val
+      #     val
+      #   end
 
-        values = 4.times.map do
-          val = [combined_value, (1..max_side_value).to_a.sample].min
-          combined_value -= val
-          val
-        end
-
-        new(player, *values)
+        new(player, *4.times.map { (1..10).to_a.sample })
       end
     end
 

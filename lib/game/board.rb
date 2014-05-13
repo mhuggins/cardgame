@@ -28,7 +28,15 @@ module Game
     end
 
     def score(player_id)
-      @tiles.select { |row| row.select { |card| card && card.player.id == player_id } }.count
+      count = 0
+
+      @tiles.each do |row|
+        row.each do |card|
+          count += 1 if card && card.player.id == player_id
+        end
+      end
+
+      count
     end
 
     def as_json(*)
