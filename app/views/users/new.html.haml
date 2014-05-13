@@ -1,1 +1,5 @@
-new user
+= form_tag users_path do
+  %h1
+    Your Name:
+    = text_field_tag 'name'
+    = button_tag 'Join Game', type: :submit
