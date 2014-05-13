@@ -12,6 +12,10 @@ module Game
       @cards.find { |card| card.id == id }
     end
 
+    def as_json(*)
+      { id: id, name: name }
+    end
+
     def self.generate_id
       @id ||= 0
       @id += 1

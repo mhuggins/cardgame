@@ -1,7 +1,7 @@
 module Game
   class Game
-    BOARD_SIZE = 3
-    CARD_COUNT = (BOARD_SIZE ^ 2 / 2).ceil
+    BOARD_SIZE = 3.freeze
+    CARD_COUNT = (BOARD_SIZE ^ 2 / 2).ceil.freeze
 
     attr_reader :players, :board
 
@@ -23,13 +23,13 @@ module Game
       @board.play(x, y, card)
     end
 
-    def to_json
+    def as_json(*)
       {
-          players: @players.to_json,
-          board: @board.to_json,
+          players: @players.as_json,
+          board: @board.as_json,
           decks: {
-              1 => @players[0].cards.to_json,
-              2 => @players[1].cards.to_json,
+              1 => @players[0].cards.as_json,
+              2 => @players[1].cards.as_json,
           },
           scores: {
               1 => @board.score(@players[0].id),

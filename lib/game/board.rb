@@ -28,15 +28,11 @@ module Game
     end
 
     def score(player_id)
-      @tiles.select { |card| card && card.player.id == player_id }.count
+      @tiles.select { |row| row.select { |card| card && card.player.id == player_id } }.count
     end
 
-    def to_json
-      obj = @tiles.map do |row|
-        row.map(&:to_json)
-      end
-
-      obj.to_json
+    def as_json(*)
+      @tiles.map { |row| row.map(&:as_json) }.as_json
     end
   end
 end

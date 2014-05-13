@@ -11,8 +11,8 @@ module Game
       @strength_left = strength_left
     end
 
-    def to_json
-      { player: player.id, strengths: [strength_top, strength_right, strength_bottom, strength_left] }.to_json
+    def as_json(*)
+      { player: player.id, strengths: [strength_top, strength_right, strength_bottom, strength_left] }
     end
 
     def self.generate(player, count, combined_value = 20)
