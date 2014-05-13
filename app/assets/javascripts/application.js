@@ -12,5 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= require base
+//= require util
+//= require_tree ./components
 //= require_tree .
