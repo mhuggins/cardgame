@@ -35,8 +35,8 @@ module Game
           players: @players.as_json,
           board: @board.as_json,
           decks: {
-              1 => @players[0].cards.as_json,
-              2 => @players[1].cards.as_json,
+              @players[0].id => @players[0].cards.as_json,
+              @players[1].id => @players[1].cards.as_json,
           },
           scores: {
               1 => @board.score(@players[0].id),
