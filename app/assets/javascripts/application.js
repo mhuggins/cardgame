@@ -11,8 +11,30 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.ui.draggable
+//= require jquery.ui.droppable
 //= require jquery_ujs
 //= require base
 //= require util
 //= require_tree ./components
 //= require_tree .
+
+jQuery(function ($) {
+  $('.game-card').draggable({
+    cancel:         '.board',
+    snap:           '.board .game-card',
+    snapMode:       'inner',
+    revert:         'invalid',
+    revertDuration: 200,
+    scroll:         false,
+    appendTo:       'body',
+    helper:         'clone'
+  });
+
+  $('.board .game-card').droppable({
+    accept: '.game-card',
+    drop: function (event, ui) {
+      ui.draggable.detach().css({'background-color': 'red'}).appendTo(this);
+    }
+  });
+});

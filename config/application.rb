@@ -29,8 +29,7 @@ module CardGame
 
     config.middleware.use FayeRails::Middleware, mount: '/faye', timeout: 25 do
       add_extension Extensions::MatchMaking.new
-      # add_extension Extensions::Match
-      # load_adapter 'thin'
+      # add_extension Extensions::Match.new
     end
   end
 end
